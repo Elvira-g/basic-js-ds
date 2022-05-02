@@ -22,34 +22,37 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   }
  * }
  */
+class ListNode {
+   constructor(x) {
+      this.value = x;
+      this.next = null;
+   }
+   }
 function removeKFromList(/* l, k */) {
   let list = arguments[0];
   let num = arguments[1];
+  let prev = null;
 
-  let current = this.head;
-  let index = 0;
+  current = list;
 
   while ( current ) {
-      if ( current.value === num ) {
-          index = index
-          if ( index === 0 ) {
-              this.head = current.head;
+      if ( current.value == num ) {
+          if ( prev == null) {
+              list = current.next;
+          } else if ( current.next == null) {
+              prev.next = null;
           } else {
-              let prev = null;
-              let indx = 0;
-              while (indx < index) {
-                  prev = current;
-                  current = current.next;
-                  indx++;
-              }
               prev.next = current.next;
+
           }
-          this.length--;
+
+      } else {
+          prev = current;
       }
-      current = current.next;
-      index++;
+      current = current.next;  
+      
   }
-  return current.value;
+  return list
   // remove line with error and write your code here
 }
 
